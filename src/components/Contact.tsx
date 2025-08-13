@@ -75,43 +75,43 @@ const Contact = () => {
               <h3 className="text-2xl font-bold text-slate-800 mb-6">Contact Information</h3>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <div className="bg-orange-100 p-3 rounded-lg">
-                    <MapPin className="w-6 h-6 text-orange-600" />
+                  <div className="bg-red-100 p-3 rounded-lg">
+                    <MapPin className="w-6 h-6 text-red-800" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-slate-800 mb-1">Head Office</h4>
-                    <p className="text-slate-600">BVM MSBELT, S.L.</p>
-                    <p className="text-slate-600">Tornosol Industrial Area</p>
-                    <p className="text-slate-600">C/ Vinyals 16, Polígono Industrial "La Serra"</p>
-                    <p className="text-slate-600">12790 La Pobla, Spain</p>
+                    <p className="text-slate-600">S.Y.NO: 494/5A,6,7B</p>
+                    <p className="text-slate-600">THOTAVARIPALEM,</p>
+                    <p className="text-slate-600">GAVINIVARIPALEM ROAD, CHIRALA - 523166</p>
+                    <p className="text-slate-600">ANDHRA PRADESH, INDIA.</p>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="bg-orange-100 p-3 rounded-lg">
-                    <Phone className="w-6 h-6 text-orange-600" />
+                  <div className="bg-red-100 p-3 rounded-lg">
+                    <Phone className="w-6 h-6 text-red-800" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-slate-800 mb-1">Phone Numbers</h4>
-                    <p className="text-slate-600">+34 961 540 042</p>
-                    <p className="text-slate-600">+34 609 464 049</p>
+                    <p className="text-slate-600">+91 9441516789</p>
+                    <p className="text-slate-600">+91 9000868509</p>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="bg-orange-100 p-3 rounded-lg">
-                    <Mail className="w-6 h-6 text-orange-600" />
+                  <div className="bg-red-100 p-3 rounded-lg">
+                    <Mail className="w-6 h-6 text-red-800" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-slate-800 mb-1">Email</h4>
-                    <p className="text-slate-600">ms@msbelt.com</p>
+                    <p className="text-slate-600">msb@msbelt.com</p>
                     <p className="text-slate-600">www.msbelt.com</p>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="bg-orange-100 p-3 rounded-lg">
-                    <Clock className="w-6 h-6 text-orange-600" />
+                  <div className="bg-red-100 p-3 rounded-lg">
+                    <Clock className="w-6 h-6 text-red-800" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-slate-800 mb-1">Business Hours</h4>
@@ -174,7 +174,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-800 focus:border-red-800 transition-colors"
                     placeholder="Your full name"
                   />
                 </div>
@@ -189,7 +189,7 @@ const Contact = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-800 focus:border-red-800 transition-colors"
                     placeholder="+1 (555) 123-4567"
                   />
                 </div>
@@ -207,7 +207,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-800 focus:border-red-800 transition-colors"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -221,7 +221,7 @@ const Contact = () => {
                     value={formData.country}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-800 focus:border-red-800 transition-colors"
                   >
                     {countries.map((country, index) => (
                       <option key={index} value={country === 'Select Country' ? '' : country}>
@@ -242,7 +242,7 @@ const Contact = () => {
                   name="company"
                   value={formData.company}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors"
+                                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-800 focus:border-red-800 transition-colors"
                   placeholder="Your company name"
                 />
               </div>
@@ -258,14 +258,14 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors resize-none"
+                                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-800 focus:border-red-800 transition-colors resize-none"
                   placeholder="Tell us about your conveyor belt requirements, specifications, or any questions you have..."
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
+                className="w-full bg-gradient-to-r from-red-800 to-red-900 hover:from-red-700 hover:to-red-800 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
               >
                 <Send className="w-5 h-5" />
                 <span>Send Message</span>

@@ -40,7 +40,7 @@ const Products = () => {
         {
           code: "MRS 135",
           name: "Linen Suction Band",
-          image: "/images/DSC03517_1_11zon.jpg",
+          image: "/images/Belts/MRS135.JPG",
           specs: {
             material: "Linen",
             temperature: "up to 120°C",
@@ -54,7 +54,7 @@ const Products = () => {
         {
           code: "MRS 126",
           name: "Linen Suction Band",
-          image: "/images/DSC03557_2_11zon.jpg",
+          image: "/images/Belts/MRS126.JPG",
           specs: {
             material: "Linen",
             temperature: "up to 120°C",
@@ -68,7 +68,7 @@ const Products = () => {
         {
           code: "MRS 135B",
           name: "Linen Suction Band",
-          image: "/images/DSC03743_3_11zon.jpg",
+          image: "/images/Belts/MRS135B.JPG",
           specs: {
             material: "Linen",
             temperature: "up to 120°C",
@@ -82,7 +82,7 @@ const Products = () => {
         {
           code: "MRS 126B",
           name: "Linen Suction Band",
-          image: "/images/DSC03517_1_11zon.jpg",
+          image: "/images/Belts/MRS126B.JPG",
           specs: {
             material: "Linen",
             temperature: "up to 120°C",
@@ -96,7 +96,7 @@ const Products = () => {
         {
           code: "MSS 032",
           name: "Linen Suction Band",
-          image: "/images/DSC03557_2_11zon.jpg",
+          image: "/images/Belts/MSS 032.JPG",
           specs: {
             material: "Linen",
             temperature: "up to 180°C",
@@ -118,7 +118,7 @@ const Products = () => {
         {
           code: "LKP066.12",
           name: "Linen Cigar Belt",
-          image: "/images/DSC03743_3_11zon.jpg",
+          image: "/images/Belts/LKP066.JPG",
           specs: {
             material: "Linen",
             temperature: "up to 180°C",
@@ -132,7 +132,7 @@ const Products = () => {
         {
           code: "LKP066.36",
           name: "Linen Cigar Belt",
-          image: "/images/DSC03517_1_11zon.jpg",
+          image: "/images/Belts/LKP066.JPG",
           specs: {
             material: "Linen",
             temperature: "up to 180°C",
@@ -154,7 +154,7 @@ const Products = () => {
         {
           code: "VL 048",
           name: "Garniture Tape",
-          image: "/images/DSC03557_2_11zon.jpg",
+          image: "/images/Belts/VAL048.JPG",
           specs: {
             material: "Synthetic",
             temperature: "up to 180°C",
@@ -168,7 +168,7 @@ const Products = () => {
         {
           code: "MGT 129",
           name: "Garniture Tape",
-          image: "/images/DSC03743_3_11zon.jpg",
+          image: "/images/Belts/MGT129.JPG",
           specs: {
             material: "Synthetic",
             temperature: "up to 180°C",
@@ -182,7 +182,7 @@ const Products = () => {
         {
           code: "MSS 075",
           name: "Garniture Tape",
-          image: "/images/DSC03517_1_11zon.jpg",
+          image: "/images/Belts/MSS075.JPG",
           specs: {
             material: "Synthetic",
             temperature: "up to 180°C",
@@ -196,7 +196,7 @@ const Products = () => {
         {
           code: "MCP 225",
           name: "Garniture Tape",
-          image: "/images/DSC03557_2_11zon.jpg",
+          image: "/images/Belts/VAL048.JPG",
           specs: {
             material: "Synthetic",
             temperature: "up to 80°C",
@@ -218,7 +218,7 @@ const Products = () => {
         {
           code: "LPP 057",
           name: "Tobacco Delivery Belt",
-          image: "/images/DSC03743_3_11zon.jpg",
+          image: "/images/Belts/LKP066.JPG",
           specs: {
             material: "Synthetic",
             temperature: "up to 180°C",
@@ -232,7 +232,7 @@ const Products = () => {
         {
           code: "MKK 168",
           name: "Tobacco Delivery Belt",
-          image: "/images/DSC03517_1_11zon.jpg",
+          image: "/images/Belts/MRS135.JPG",
           specs: {
             material: "Synthetic",
             temperature: "up to 180°C",
@@ -246,7 +246,7 @@ const Products = () => {
         {
           code: "MKK 1057.2",
           name: "Tobacco Delivery Belt",
-          image: "/images/DSC03557_2_11zon.jpg",
+          image: "/images/Belts/MRS126.JPG",
           specs: {
             material: "Synthetic",
             temperature: "up to 180°C",
@@ -260,7 +260,7 @@ const Products = () => {
         {
           code: "LKP 033",
           name: "Tobacco Delivery Belt",
-          image: "/images/DSC03743_3_11zon.jpg",
+          image: "/images/Belts/MRS135B.JPG",
           specs: {
             material: "Synthetic",
             temperature: "up to 80°C",
@@ -282,7 +282,7 @@ const Products = () => {
         {
           code: "LKP066",
           name: "Specialty Linen Belt",
-          image: "/images/DSC03517_1_11zon.jpg",
+          image: "/images/Belts/LKP066.JPG",
           specs: {
             material: "Linen",
             temperature: "up to 180°C",
@@ -296,7 +296,7 @@ const Products = () => {
         {
           code: "LKP066C",
           name: "Specialty Linen Belt",
-          image: "/images/DSC03557_2_11zon.jpg",
+          image: "/images/Belts/MRS126B.JPG",
           specs: {
             material: "Linen",
             temperature: "up to 180°C",
@@ -356,7 +356,7 @@ const Products = () => {
             onClick={() => setSelectedCategory('all')}
             className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
               selectedCategory === 'all'
-                ? 'bg-gradient-to-r from-orange-500 to-red-600 text-white shadow-lg'
+                ? 'bg-gradient-to-r from-red-800 to-red-900 text-white shadow-lg'
                 : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
             }`}
           >
@@ -368,7 +368,7 @@ const Products = () => {
               onClick={() => setSelectedCategory(category.id)}
               className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
                 selectedCategory === category.id
-                  ? 'bg-gradient-to-r from-orange-500 to-red-600 text-white shadow-lg'
+                  ? 'bg-gradient-to-r from-red-800 to-red-900 text-white shadow-lg'
                   : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
               }`}
             >
@@ -393,7 +393,7 @@ const Products = () => {
               {/* Product Info */}
               <div className="p-6">
                       <div className="flex items-start justify-between mb-3">
-                  <div className="bg-gradient-to-r from-orange-500 to-red-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                  <div className="bg-gradient-to-r from-red-800 to-red-900 text-white px-3 py-1 rounded-full text-sm font-bold">
                           {product.code}
                         </div>
                       </div>
@@ -403,35 +403,35 @@ const Products = () => {
                 {/* Specifications */}
                 <div className="space-y-2 mb-4">
                   <div className="flex items-center space-x-2 text-sm">
-                    <Package className="w-4 h-4 text-orange-500" />
+                    <Package className="w-4 h-4 text-red-800" />
                     <span className="text-slate-600">{product.specs.material}</span>
                   </div>
                   
                   <div className="flex items-center space-x-2 text-sm">
-                    <Thermometer className="w-4 h-4 text-orange-500" />
+                    <Thermometer className="w-4 h-4 text-red-800" />
                     <span className="text-slate-600">{product.specs.temperature}</span>
                   </div>
                   
                   <div className="flex items-center space-x-2 text-sm">
-                    <Zap className="w-4 h-4 text-orange-500" />
+                    <Zap className="w-4 h-4 text-red-800" />
                     <span className="text-slate-600">Strength: {product.specs.strength}</span>
                   </div>
                   
                   <div className="flex items-center space-x-2 text-sm">
-                    <Ruler className="w-4 h-4 text-orange-500" />
+                    <Ruler className="w-4 h-4 text-red-800" />
                     <span className="text-slate-600">Thickness: {product.specs.thickness}</span>
                   </div>
                   
                   {product.specs.airFlow && (
                     <div className="flex items-center space-x-2 text-sm">
-                      <Droplets className="w-4 h-4 text-orange-500" />
+                      <Droplets className="w-4 h-4 text-red-800" />
                       <span className="text-slate-600">Air Flow: {product.specs.airFlow}</span>
                     </div>
                   )}
                   
                   {product.specs.texture && (
                     <div className="flex items-center space-x-2 text-sm">
-                      <Layers className="w-4 h-4 text-orange-500" />
+                      <Layers className="w-4 h-4 text-red-800" />
                       <span className="text-slate-600">Texture: {product.specs.texture}</span>
                     </div>
                   )}
@@ -450,7 +450,7 @@ const Products = () => {
         </div>
 
         {/* Applications */}
-        <div className="mt-16 bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl text-white p-8">
+        <div className="mt-16 bg-gradient-to-r from-red-800 to-red-900 rounded-2xl text-white p-8">
           <h3 className="text-2xl font-bold mb-6 text-center">Applications</h3>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center">
