@@ -1,481 +1,230 @@
-import React, { useState } from 'react';
-import { Package, Layers, Settings, CheckCircle, Thermometer, Zap, Ruler, Droplets } from 'lucide-react';
-
-interface ProductSpecs {
-  material: string;
-  temperature: string;
-  elongation?: string;
-  strength: string;
-  texture?: string;
-  thickness: string;
-  application: string;
-  airFlow?: string;
-}
-
-interface Product {
-  code: string;
-  name: string;
-  image: string;
-  specs: ProductSpecs;
-}
-
-interface ProductCategory {
-  id: string;
-  title: string;
-  icon: React.ReactNode;
-  description: string;
-  products: Product[];
-}
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Cog, Shield, Zap, Star, CheckCircle, TrendingUp, Award, Globe } from 'lucide-react';
 
 const Products = () => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
-
-  const productCategories: ProductCategory[] = [
+  const products = [
     {
-      id: 'suction-bands',
-      title: "Suction Bands",
-      icon: <Layers className="w-8 h-8" />,
-      description: "High-performance woven suction belts for tobacco rod formation",
-      products: [
-        {
-          code: "MRS 135",
-          name: "Linen Suction Band",
-          image: "/images/Belts/MRS135.JPG",
-          specs: {
-            material: "Linen",
-            temperature: "up to 120°C",
-            elongation: "0.7%",
-            strength: "2500 N/cm",
-            texture: "soft",
-            thickness: "0.50mm",
-            application: "Cigarette production"
-          }
-        },
-        {
-          code: "MRS 126",
-          name: "Linen Suction Band",
-          image: "/images/Belts/MRS126.JPG",
-          specs: {
-            material: "Linen",
-            temperature: "up to 120°C",
-            elongation: "0.65%",
-            strength: "2650 N/cm",
-            texture: "soft",
-            thickness: "0.52mm",
-            application: "Cigarette production"
-          }
-        },
-        {
-          code: "MRS 135B",
-          name: "Linen Suction Band",
-          image: "/images/Belts/MRS135B.JPG",
-          specs: {
-            material: "Linen",
-            temperature: "up to 120°C",
-            elongation: "0.72%",
-            strength: "2600 N/cm",
-            texture: "soft",
-            thickness: "0.58mm",
-            application: "Cigarette production"
-          }
-        },
-        {
-          code: "MRS 126B",
-          name: "Linen Suction Band",
-          image: "/images/Belts/MRS126B.JPG",
-          specs: {
-            material: "Linen",
-            temperature: "up to 120°C",
-            elongation: "0.7%",
-            strength: "2650 N/cm",
-            texture: "soft",
-            thickness: "0.65mm",
-            application: "Cigarette filter production"
-          }
-        },
-        {
-          code: "MSS 032",
-          name: "Linen Suction Band",
-          image: "/images/Belts/MSS 032.JPG",
-          specs: {
-            material: "Linen",
-            temperature: "up to 180°C",
-            elongation: "0.7%",
-            strength: "5400 N/cm",
-            texture: "soft",
-            thickness: "0.50mm",
-            application: "Cigarette production"
-          }
-        }
-      ]
+      name: "Cigarette Conveyor Belts",
+      description: "High-performance belts designed specifically for cigarette manufacturing, ensuring smooth operation and minimal maintenance.",
+      features: ["Heat resistant", "Low friction", "Precision timing", "Long lifespan"],
+      image: "/images/BELT.png", // Using existing image first
+      category: "Tobacco Industry",
+      color: "from-blue-500 to-indigo-500"
     },
     {
-      id: 'cigar-belts',
-      title: "Cigar Belts",
-      icon: <Package className="w-8 h-8" />,
-      description: "Specialized belts for cigar manufacturing and processing",
-      products: [
-        {
-          code: "LKP066.12",
-          name: "Linen Cigar Belt",
-          image: "/images/Belts/LKP066.JPG",
-          specs: {
-            material: "Linen",
-            temperature: "up to 180°C",
-            elongation: "0.7%",
-            strength: "5400 N/cm",
-            texture: "soft",
-            thickness: "0.50mm",
-            application: "Cigar production"
-          }
-        },
-        {
-          code: "LKP066.36",
-          name: "Linen Cigar Belt",
-          image: "/images/Belts/LKP066.JPG",
-          specs: {
-            material: "Linen",
-            temperature: "up to 180°C",
-            elongation: "0.7%",
-            strength: "5400 N/cm",
-            texture: "soft",
-            thickness: "0.50mm",
-            application: "Cigar production"
-          }
-        }
-      ]
+      name: "Filter Production Belts",
+      description: "Specialized belts for filter manufacturing with superior grip and durability for high-speed production lines.",
+      features: ["Superior grip", "High-speed compatible", "Chemical resistant", "Easy maintenance"],
+      image: "/images/BELTRR.JPG", // Using existing image first
+      category: "Filter Manufacturing",
+      color: "from-indigo-500 to-purple-500"
     },
     {
-      id: 'garniture-tapes',
-      title: "Garniture Tapes",
-      icon: <Settings className="w-8 h-8" />,
-      description: "Precision tapes for tobacco delivery and processing",
-      products: [
-        {
-          code: "VL 048",
-          name: "Garniture Tape",
-          image: "/images/Belts/VAL048.JPG",
-          specs: {
-            material: "Synthetic",
-            temperature: "up to 180°C",
-            elongation: "0.2%",
-            strength: "5400 N/cm",
-            airFlow: "53 m³/h",
-            thickness: "0.50mm",
-            application: "Tobacco delivery"
-          }
-        },
-        {
-          code: "MGT 129",
-          name: "Garniture Tape",
-          image: "/images/Belts/MGT129.JPG",
-          specs: {
-            material: "Synthetic",
-            temperature: "up to 180°C",
-            elongation: "0.19%",
-            strength: "6200 N/cm",
-            airFlow: "53 m³/h",
-            thickness: "0.50mm",
-            application: "Tobacco delivery"
-          }
-        },
-        {
-          code: "MSS 075",
-          name: "Garniture Tape",
-          image: "/images/Belts/MSS075.JPG",
-          specs: {
-            material: "Synthetic",
-            temperature: "up to 180°C",
-            elongation: "0.53%",
-            strength: "4200 N/cm",
-            airFlow: "53 m³/h",
-            thickness: "0.50mm",
-            application: "Tobacco delivery"
-          }
-        },
-        {
-          code: "MCP 225",
-          name: "Garniture Tape",
-          image: "/images/Belts/VAL048.JPG",
-          specs: {
-            material: "Synthetic",
-            temperature: "up to 80°C",
-            elongation: "0.51%",
-            strength: "4250 N/cm",
-            airFlow: "53 m³/h",
-            thickness: "0.54mm",
-            application: "Tobacco delivery"
-          }
-        }
-      ]
+      name: "Industrial Conveyor Belts",
+      description: "Heavy-duty belts for various industrial applications, built to withstand harsh conditions and heavy loads.",
+      features: ["Heavy load capacity", "Weather resistant", "High durability", "Versatile design"],
+      image: "/images/BELT.png", // Using existing image first
+      category: "General Industry",
+      color: "from-purple-500 to-pink-500"
     },
     {
-      id: 'tobacco-delivery',
-      title: "Tobacco Delivery Belts",
-      icon: <Layers className="w-8 h-8" />,
-      description: "High-performance belts for tobacco transportation and processing",
-      products: [
-        {
-          code: "LPP 057",
-          name: "Tobacco Delivery Belt",
-          image: "/images/Belts/LKP066.JPG",
-          specs: {
-            material: "Synthetic",
-            temperature: "up to 180°C",
-            elongation: "0.2%",
-            strength: "5400 N/cm",
-            airFlow: "53 m³/h",
-            thickness: "0.50mm",
-            application: "Tobacco delivery"
-          }
-        },
-        {
-          code: "MKK 168",
-          name: "Tobacco Delivery Belt",
-          image: "/images/Belts/MRS135.JPG",
-          specs: {
-            material: "Synthetic",
-            temperature: "up to 180°C",
-            elongation: "0.19%",
-            strength: "6200 N/cm",
-            airFlow: "53 m³/h",
-            thickness: "0.50mm",
-            application: "Tobacco delivery"
-          }
-        },
-        {
-          code: "MKK 1057.2",
-          name: "Tobacco Delivery Belt",
-          image: "/images/Belts/MRS126.JPG",
-          specs: {
-            material: "Synthetic",
-            temperature: "up to 180°C",
-            elongation: "0.53%",
-            strength: "4200 N/cm",
-            airFlow: "53 m³/h",
-            thickness: "0.50mm",
-            application: "Tobacco delivery"
-          }
-        },
-        {
-          code: "LKP 033",
-          name: "Tobacco Delivery Belt",
-          image: "/images/Belts/MRS135B.JPG",
-          specs: {
-            material: "Synthetic",
-            temperature: "up to 80°C",
-            elongation: "0.51%",
-            strength: "4250 N/cm",
-            airFlow: "53 m³/h",
-            thickness: "0.54mm",
-            application: "Tobacco delivery"
-          }
-        }
-      ]
-    },
-    {
-      id: 'specialty-belts',
-      title: "Specialty Belts",
-      icon: <Settings className="w-8 h-8" />,
-      description: "Custom and specialized belts for unique applications",
-      products: [
-        {
-          code: "LKP066",
-          name: "Specialty Linen Belt",
-          image: "/images/Belts/LKP066.JPG",
-          specs: {
-            material: "Linen",
-            temperature: "up to 180°C",
-            elongation: "0.7%",
-            strength: "5400 N/cm",
-            texture: "soft",
-            thickness: "0.50mm",
-            application: "Specialty applications"
-          }
-        },
-        {
-          code: "LKP066C",
-          name: "Specialty Linen Belt",
-          image: "/images/Belts/MRS126B.JPG",
-          specs: {
-            material: "Linen",
-            temperature: "up to 180°C",
-            elongation: "0.7%",
-            strength: "5400 N/cm",
-            texture: "soft",
-            thickness: "0.50mm",
-            application: "Specialty applications"
-          }
-        }
-      ]
+      name: "Custom Belt Solutions",
+      description: "Tailored conveyor belt solutions designed to meet your specific requirements and industry standards.",
+      features: ["Custom specifications", "Industry compliance", "Technical support", "Quality assurance"],
+      image: "/images/BELTRR.JPG", // Using existing image first
+      category: "Custom Solutions",
+      color: "from-green-500 to-emerald-500"
     }
   ];
 
-  const allProducts = productCategories.flatMap(category => category.products);
-  const filteredProducts: Product[] = selectedCategory === 'all' ? allProducts : 
-    productCategories.find(cat => cat.id === selectedCategory)?.products || [];
-
   const features = [
-    "High wear resistance",
-    "Optimal grip for tobacco manufacturing",
-    "Precise tracking on conveyor systems",
-    "Variety of materials and patterns",
-    "Temperature resistant up to 180°C",
-    "Custom specifications available"
+    {
+      icon: Shield,
+      title: "Premium Quality",
+      description: "Manufactured using the finest materials and advanced technology for exceptional performance and longevity.",
+      color: "from-blue-500 to-indigo-500"
+    },
+    {
+      icon: Cog,
+      title: "Precision Engineering",
+      description: "Every belt is engineered with exact specifications to ensure optimal performance in your specific application.",
+      color: "from-indigo-500 to-purple-500"
+    },
+    {
+      icon: Zap,
+      title: "High Performance",
+      description: "Designed to operate at maximum efficiency with minimal maintenance requirements and extended service life.",
+      color: "from-purple-500 to-pink-500"
+    },
+    {
+      icon: Star,
+      title: "Industry Leading",
+      description: "Trusted by leading manufacturers worldwide for their reliability, quality, and innovative design.",
+      color: "from-yellow-500 to-orange-500"
+    }
   ];
 
   return (
-    <section id="products" className="py-20 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="products" className="py-24 bg-black relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 right-10 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-10 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/3 w-32 h-32 bg-indigo-500/5 rounded-full blur-2xl"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-slate-800 mb-4">
-            Our Product Range
-          </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Comprehensive conveyor Belts engineered for the tobacco industry's most demanding applications
-          </p>
-        </div>
-
-        {/* Product Features */}
-        <div className="bg-white rounded-2xl p-8 mb-16 shadow-lg">
-          <h3 className="text-2xl font-bold text-slate-800 mb-6 text-center">Key Features</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((feature, index) => (
-              <div key={index} className="flex items-center space-x-3">
-                <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
-                <span className="text-slate-700 font-medium">{feature}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          <button
-            onClick={() => setSelectedCategory('all')}
-            className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
-              selectedCategory === 'all'
-                ? 'bg-gradient-to-r from-red-800 to-red-900 text-white shadow-lg'
-                : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
-            }`}
+        <motion.div 
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.div 
+            className="inline-flex items-center bg-white/5 text-blue-400 px-6 py-3 rounded-full text-sm font-medium mb-6 border border-white/10 backdrop-blur-sm"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            All Products
-          </button>
-          {productCategories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setSelectedCategory(category.id)}
-              className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
-                selectedCategory === category.id
-                  ? 'bg-gradient-to-r from-red-800 to-red-900 text-white shadow-lg'
-                  : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
-              }`}
-            >
-              {category.title}
-            </button>
-          ))}
-                  </div>
+            <Cog className="w-5 h-5 mr-3 text-blue-400" />
+            <span className="font-semibold">Our Solutions</span>
+            <Star className="w-4 h-4 ml-3 text-yellow-400" />
+          </motion.div>
+          <motion.h2 
+            className="text-5xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-indigo-100 bg-clip-text text-transparent"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            Premium Conveyor Belts
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            Discover our comprehensive range of high-quality conveyor belts designed for various industries, 
+            from tobacco manufacturing to heavy industrial applications.
+          </motion.p>
+        </motion.div>
 
         {/* Products Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredProducts.map((product, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-              {/* Product Image */}
-              <div className="h-48 overflow-hidden">
+        <motion.div 
+          className="grid md:grid-cols-2 gap-8 mb-20"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8 }}
+        >
+          {products.map((product, index) => (
+            <motion.div
+              key={index}
+              className="bg-white/5 backdrop-blur-md rounded-3xl p-8 border border-white/10 hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ 
+                y: -15, 
+                scale: 1.02,
+                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.4)"
+              }}
+            >
+              <div className="relative mb-6">
                 <img 
                   src={product.image} 
-                  alt={product.name}
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                  alt={product.name} 
+                  className="w-full h-48 object-cover rounded-2xl shadow-lg group-hover:scale-105 transition-transform duration-300"
                 />
+                <div className={`absolute top-4 left-4 bg-gradient-to-r ${product.color} text-white px-3 py-1 rounded-full text-sm font-medium`}>
+                  {product.category}
+                </div>
               </div>
               
-              {/* Product Info */}
-              <div className="p-6">
-                      <div className="flex items-start justify-between mb-3">
-                  <div className="bg-gradient-to-r from-red-800 to-red-900 text-white px-3 py-1 rounded-full text-sm font-bold">
-                          {product.code}
-                        </div>
-                      </div>
-                
-                <h4 className="font-bold text-slate-800 mb-3 text-lg">{product.name}</h4>
-                
-                {/* Specifications */}
-                <div className="space-y-2 mb-4">
-                  <div className="flex items-center space-x-2 text-sm">
-                    <Package className="w-4 h-4 text-red-800" />
-                    <span className="text-slate-600">{product.specs.material}</span>
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors duration-300">
+                {product.name}
+              </h3>
+              
+              <p className="text-gray-300 mb-6 leading-relaxed">
+                {product.description}
+              </p>
+              
+              <div className="space-y-2">
+                {product.features.map((feature, featureIndex) => (
+                  <div 
+                    key={featureIndex} 
+                    className="flex items-center space-x-3"
+                  >
+                    <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span className="text-gray-300 text-sm">{feature}</span>
                   </div>
-                  
-                  <div className="flex items-center space-x-2 text-sm">
-                    <Thermometer className="w-4 h-4 text-red-800" />
-                    <span className="text-slate-600">{product.specs.temperature}</span>
-                  </div>
-                  
-                  <div className="flex items-center space-x-2 text-sm">
-                    <Zap className="w-4 h-4 text-red-800" />
-                    <span className="text-slate-600">Strength: {product.specs.strength}</span>
-                  </div>
-                  
-                  <div className="flex items-center space-x-2 text-sm">
-                    <Ruler className="w-4 h-4 text-red-800" />
-                    <span className="text-slate-600">Thickness: {product.specs.thickness}</span>
-                  </div>
-                  
-                  {product.specs.airFlow && (
-                    <div className="flex items-center space-x-2 text-sm">
-                      <Droplets className="w-4 h-4 text-red-800" />
-                      <span className="text-slate-600">Air Flow: {product.specs.airFlow}</span>
-                    </div>
-                  )}
-                  
-                  {product.specs.texture && (
-                    <div className="flex items-center space-x-2 text-sm">
-                      <Layers className="w-4 h-4 text-red-800" />
-                      <span className="text-slate-600">Texture: {product.specs.texture}</span>
-                    </div>
-                  )}
-                </div>
-                
-                <div className="text-center">
-                  <span className="text-xs bg-slate-100 text-slate-600 px-3 py-1 rounded-full">
-                    {product.specs.application}
-                  </span>
-                </div>
-
+                ))}
               </div>
-
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Applications */}
-        <div className="mt-16 bg-gradient-to-r from-red-800 to-red-900 rounded-2xl text-white p-8">
-          <h3 className="text-2xl font-bold mb-6 text-center">Applications</h3>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="text-center">
-              <div className="bg-white/20 rounded-lg p-6 mb-4">
-                <Package className="w-12 h-12 mx-auto mb-3" />
-                <h4 className="font-semibold">Cigarette Making</h4>
-                <p className="text-sm opacity-90">Suction belts for tobacco rod formation</p>
+        {/* Features Section */}
+        <motion.div 
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8 }}
+        >
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              className="text-center group"
+              initial={{ opacity: 0, y: 30, scale: 0.8 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ y: -15, scale: 1.05 }}
+            >
+              <div className={`w-20 h-20 bg-gradient-to-r ${feature.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                <feature.icon className="w-10 h-10 text-white" />
               </div>
-            </div>
-            <div className="text-center">
-              <div className="bg-white/20 rounded-lg p-6 mb-4">
-                <Settings className="w-12 h-12 mx-auto mb-3" />
-                <h4 className="font-semibold">Filter Manufacturing</h4>
-                <p className="text-sm opacity-90">Precision belts for filter production lines</p>
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="bg-white/20 rounded-lg p-6 mb-4">
-                <Layers className="w-12 h-12 mx-auto mb-3" />
-                <h4 className="font-semibold">Tobacco Delivery</h4>
-                <p className="text-sm opacity-90">Conveyor systems for tobacco processing</p>
-              </div>
-            </div>
-          </div>
-        </div>
+              <h4 className="text-xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors duration-300">
+                {feature.title}
+              </h4>
+              <p className="text-gray-300 leading-relaxed">
+                {feature.description}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Call to Action */}
+        <motion.div 
+          className="text-center mt-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h3 className="text-3xl font-bold text-white mb-6">
+            Ready to Experience Premium Quality?
+          </h3>
+          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            Contact our expert team to discuss your specific requirements and discover how our conveyor belts 
+            can enhance your manufacturing processes.
+          </p>
+          <motion.button
+            className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Get Started Today
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   );
