@@ -30,7 +30,7 @@ const GlobalPresence = () => {
   ];
 
   return (
-    <section id="global" className="py-20 bg-gradient-to-br from-black via-red-800 to-red-900 text-white">
+    <section id="global" className="py-20 bg-gradient-to-br from-red-800 to-red-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">

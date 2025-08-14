@@ -2,7 +2,7 @@ import { ArrowRight, Award, Globe, Cog } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section id="home" className="relative bg-gradient-to-br from-black via-red-800 to-red-900 text-white overflow-hidden">
+    <section id="home" className="relative bg-gradient-to-br from-red-800 to-red-900 text-white overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0" style={{
@@ -27,7 +27,7 @@ const Hero = () => {
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-600"> Conveyor </span>
                 Belts
               </h1>
-              <p className="text-xl text-slate-300 leading-relaxed">
+              <p className="text-xl text-white/60 leading-relaxed">
                 Manufacturing high-performance conveyor tapes and suction belts for cigarette and filter production. 
                 Mobilizing ideas and delivering precision engineering worldwide.
               </p>
