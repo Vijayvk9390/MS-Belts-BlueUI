@@ -53,26 +53,26 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-24 bg-black relative overflow-hidden">
+    <section id="contact" className="py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 right-10 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-10 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 right-1/3 w-32 h-32 bg-indigo-500/5 rounded-full blur-2xl"></div>
+        <div className="absolute top-20 right-10 w-64 h-64 bg-gradient-to-br from-blue-200/30 to-indigo-200/30 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-10 w-80 h-80 bg-gradient-to-br from-purple-200/30 to-pink-200/30 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 right-1/3 w-32 h-32 bg-gradient-to-br from-cyan-200/30 to-blue-200/30 rounded-full blur-2xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center bg-white/5 text-blue-400 px-6 py-3 rounded-full text-sm font-medium mb-6 border border-white/10 backdrop-blur-sm">
-            <MessageCircle className="w-5 h-5 mr-3 text-blue-400" />
+          <div className="inline-flex items-center bg-gradient-to-r from-blue-500/10 to-indigo-500/10 text-blue-700 px-6 py-3 rounded-full text-sm font-medium mb-6 border border-blue-200/50 backdrop-blur-sm">
+            <MessageCircle className="w-5 h-5 mr-3 text-blue-600" />
             <span className="font-semibold">Let's Connect</span>
-            <Sparkles className="w-4 h-4 ml-3 text-yellow-400" />
+            <Sparkles className="w-4 h-4 ml-3 text-blue-600" />
           </div>
-          <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-indigo-100 bg-clip-text text-transparent">
+          <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-slate-800 via-blue-800 to-indigo-800 bg-clip-text text-transparent">
             Get In Touch
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             Ready to discuss your conveyor belt requirements? Our expert team is here to help 
             you find the perfect solution for your manufacturing needs.
           </p>
@@ -86,7 +86,7 @@ const Contact = () => {
                 <div className="p-3 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl mr-4">
                   <Building className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-3xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
+                <h3 className="text-3xl font-bold bg-gradient-to-r from-slate-800 to-blue-800 bg-clip-text text-transparent">
                   Contact Information
                 </h3>
               </div>
@@ -137,9 +137,9 @@ const Contact = () => {
                       <item.icon className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-white mb-3 text-lg">{item.title}</h4>
+                      <h4 className="font-semibold text-slate-800 mb-3 text-lg">{item.title}</h4>
                       {item.details.map((detail, detailIndex) => (
-                        <p key={detailIndex} className="text-gray-300 mb-1 leading-relaxed">{detail}</p>
+                        <p key={detailIndex} className="text-slate-600 mb-1 leading-relaxed">{detail}</p>
                       ))}
                     </div>
                   </div>
@@ -148,12 +148,12 @@ const Contact = () => {
             </div>
 
             {/* Why Choose Us */}
-            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/10">
+            <div className="bg-gradient-to-br from-white to-blue-50/50 rounded-2xl p-6 shadow-xl border border-blue-200/50 backdrop-blur-sm">
               <div className="flex items-center mb-4">
                 <div className="p-2 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl mr-3">
                   <CheckCircle className="w-5 h-5 text-white" />
                 </div>
-                <h4 className="font-bold text-white text-lg">Why Choose MSBELT?</h4>
+                <h4 className="font-bold text-slate-800 text-lg">Why Choose MSBELT?</h4>
               </div>
               <div className="space-y-3">
                 {[
@@ -166,7 +166,7 @@ const Contact = () => {
                     <div className="p-1.5 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg group-hover:scale-110 transition-transform duration-300">
                       <CheckCircle className="w-4 h-4 text-white" />
                     </div>
-                    <span className="text-gray-300 font-medium">{benefit}</span>
+                    <span className="text-slate-600 font-medium">{benefit}</span>
                   </div>
                 ))}
               </div>
@@ -174,32 +174,32 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white/5 backdrop-blur-md rounded-3xl shadow-2xl p-8 pb-6 border border-white/10">
+          <div className="bg-gradient-to-br from-white to-blue-50/50 rounded-3xl shadow-2xl p-8 pb-6 border border-blue-200/50 backdrop-blur-sm">
             <div className="flex items-center mb-8">
               <div className="p-3 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl mr-4">
                 <Send className="w-6 h-6 text-white" />
               </div>
-              <h3 className="text-3xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
+              <h3 className="text-3xl font-bold bg-gradient-to-r from-slate-800 to-blue-800 bg-clip-text text-transparent">
                 Send Us a Message
               </h3>
             </div>
             
             {isSubmitted && (
-              <div className="bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-2xl p-6 mb-8">
+              <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-6 mb-8">
                 <div className="flex items-center space-x-3">
                   <div className="p-2 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg">
                     <CheckCircle className="w-5 h-5 text-white" />
                   </div>
-                  <span className="text-green-400 font-semibold text-lg">Message sent successfully!</span>
+                  <span className="text-green-700 font-semibold text-lg">Message sent successfully!</span>
                 </div>
-                <p className="text-green-300 text-base mt-2">We'll get back to you within 24 hours.</p>
+                <p className="text-green-600 text-base mt-2">We'll get back to you within 24 hours.</p>
               </div>
             )}
 
             <form onSubmit={handleSubmit} className="space-y-4 mb-0">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-gray-300 mb-3">
+                  <label htmlFor="name" className="block text-sm font-semibold text-slate-700 mb-3">
                     Full Name *
                   </label>
                   <input
@@ -209,12 +209,12 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-4 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-white/5 backdrop-blur-sm hover:bg-white/10 text-white placeholder-gray-400"
+                    className="w-full px-4 py-4 border border-blue-200/50 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-white/50 backdrop-blur-sm hover:bg-white/80"
                     placeholder="Your full name"
                   />
                 </div>
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-semibold text-gray-300 mb-3">
+                  <label htmlFor="phone" className="block text-sm font-semibold text-slate-700 mb-3">
                     Phone Number *
                   </label>
                   <input
@@ -224,7 +224,7 @@ const Contact = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-4 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-white/5 backdrop-blur-sm hover:bg-white/10 text-white placeholder-gray-400"
+                    className="w-full px-4 py-4 border border-blue-200/50 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-white/50 backdrop-blur-sm hover:bg-white/80"
                     placeholder="+1 (555) 123-4567"
                   />
                 </div>
@@ -232,7 +232,7 @@ const Contact = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-gray-300 mb-3">
+                  <label htmlFor="email" className="block text-sm font-semibold text-slate-700 mb-3">
                     Email Address *
                   </label>
                   <input
@@ -242,12 +242,12 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-4 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-white/5 backdrop-blur-sm hover:bg-white/10 text-white placeholder-gray-400"
+                    className="w-full px-4 py-4 border border-blue-200/50 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-white/50 backdrop-blur-sm hover:bg-white/80"
                     placeholder="your@email.com"
                   />
                 </div>
                 <div>
-                  <label htmlFor="country" className="block text-sm font-semibold text-gray-300 mb-3">
+                  <label htmlFor="country" className="block text-sm font-semibold text-slate-700 mb-3">
                     Country *
                   </label>
                   <select
@@ -256,10 +256,10 @@ const Contact = () => {
                     value={formData.country}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-4 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-white/5 backdrop-blur-sm hover:bg-white/10 text-white"
+                    className="w-full px-4 py-4 border border-blue-200/50 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-white/50 backdrop-blur-sm hover:bg-white/80"
                   >
                     {countries.map((country, index) => (
-                      <option key={index} value={country === 'Select Country' ? '' : country} className="bg-gray-800 text-white">
+                      <option key={index} value={country === 'Select Country' ? '' : country}>
                         {country}
                       </option>
                     ))}
@@ -268,7 +268,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="company" className="block text-sm font-semibold text-gray-300 mb-3">
+                <label htmlFor="company" className="block text-sm font-semibold text-slate-700 mb-3">
                   Company Name
                 </label>
                 <input
@@ -277,13 +277,13 @@ const Contact = () => {
                   name="company"
                   value={formData.company}
                   onChange={handleChange}
-                  className="w-full px-4 py-4 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-white/5 backdrop-blur-sm hover:bg-white/10 text-white placeholder-gray-400"
+                  className="w-full px-4 py-4 border border-blue-200/50 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-white/50 backdrop-blur-sm hover:bg-white/80"
                   placeholder="Your company name"
                 />
               </div>
 
               <div>
-                <label htmlFor="request" className="block text-sm font-semibold text-gray-300 mb-3">
+                <label htmlFor="request" className="block text-sm font-semibold text-slate-700 mb-3">
                   Request/Message *
                 </label>
                 <textarea
@@ -293,7 +293,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-4 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-white/5 backdrop-blur-sm hover:bg-white/10 text-white placeholder-gray-400 resize-none"
+                  className="w-full px-4 py-4 border border-blue-200/50 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-white/50 backdrop-blur-sm hover:bg-white/80 resize-none"
                   placeholder="Tell us about your conveyor belt requirements, specifications, or any questions you have..."
                 />
               </div>
@@ -308,21 +308,21 @@ const Contact = () => {
             </form>
             
             {/* Additional Info to balance height */}
-            <div className="mt-6 pt-6 border-t border-white/10">
+            <div className="mt-6 pt-6 border-t border-blue-200/30">
               <div className="grid grid-cols-2 gap-4 mb-4">
-                <div className="text-center p-3 bg-white/5 rounded-xl border border-white/10">
+                <div className="text-center p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-200/30">
                   <div className="w-3 h-3 bg-blue-500 rounded-full mx-auto mb-2"></div>
-                  <span className="text-sm font-medium text-gray-300">24/7 Support</span>
+                  <span className="text-sm font-medium text-slate-700">24/7 Support</span>
                 </div>
-                <div className="text-center p-3 bg-white/5 rounded-xl border border-white/10">
+                <div className="text-center p-3 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl border border-indigo-200/30">
                   <div className="w-3 h-3 bg-indigo-500 rounded-full mx-auto mb-2"></div>
-                  <span className="text-sm font-medium text-gray-300">Quick Response</span>
+                  <span className="text-sm font-medium text-slate-700">Quick Response</span>
                 </div>
               </div>
               
               <div className="text-center space-y-2">
-                <p className="text-xs text-gray-500">We typically respond within 2-4 hours during business days</p>
-                <div className="flex items-center justify-center space-x-6 text-xs text-gray-500">
+                <p className="text-xs text-slate-500">We typically respond within 2-4 hours during business days</p>
+                <div className="flex items-center justify-center space-x-6 text-xs text-slate-500">
                   <span className="flex items-center space-x-1">
                     <Globe className="w-3 h-3" />
                     <span>Global Service</span>

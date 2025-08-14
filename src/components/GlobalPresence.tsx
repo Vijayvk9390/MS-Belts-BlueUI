@@ -1,384 +1,251 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
-import { Globe, MapPin, Building, Users, Award, TrendingUp, Star, Zap } from 'lucide-react';
-
-// Custom hook for counting animation
-const useCountUp = (end: number, duration: number = 2000) => {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  useEffect(() => {
-    if (isInView) {
-      let startTime: number;
-      let animationFrame: number;
-
-      const animate = (currentTime: number) => {
-        if (!startTime) startTime = currentTime;
-        const progress = Math.min((currentTime - startTime) / duration, 1);
-        
-        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-        const currentCount = Math.floor(easeOutQuart * end);
-        
-        setCount(currentCount);
-        
-        if (progress < 1) {
-          animationFrame = requestAnimationFrame(animate);
-        }
-      };
-
-      animationFrame = requestAnimationFrame(animate);
-
-      return () => {
-        if (animationFrame) {
-          cancelAnimationFrame(animationFrame);
-        }
-      };
-    }
-  }, [isInView, end, duration]);
-
-  return { count, ref };
-};
+import { Globe, MapPin, Users, Handshake, Sparkles, Award, TrendingUp } from 'lucide-react';
 
 const GlobalPresence = () => {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  // Parallax transforms
-  const y1 = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const y2 = useTransform(scrollYProgress, [0, 1], ["0%", "60%"]);
-
-  // Counting animations for stats
-  const countriesCount = useCountUp(25);
-  const officesCount = useCountUp(8);
-  const clientsCount = useCountUp(1000);
-  const experienceCount = useCountUp(60);
+  const locations = [
+    {
+      name: "Germany",
+      x: 52.5,
+      y: 15,
+      description: "Central European operations",
+      highlight: "Primary Market",
+      icon: "🇩🇪"
+    },
+    {
+      name: "Albania",
+      x: 55,
+      y: 22,
+      description: "Southeastern European presence",
+      highlight: "Growing Market",
+      icon: "🇦🇱"
+    },
+    {
+      name: "Switzerland",
+      x: 50,
+      y: 18,
+      description: "Central European hub",
+      highlight: "Key Partner",
+      icon: "🇨🇭"
+    },
+    {
+      name: "Spain",
+      x: 45,
+      y: 25,
+      description: "Headquarters & main operations",
+      highlight: "HQ",
+      icon: "🇪🇸"
+    },
+    {
+      name: "United Arab Emirates",
+      x: 60,
+      y: 35,
+      description: "Middle East operations",
+      highlight: "Regional Hub",
+      icon: "🇦🇪"
+    },
+    {
+      name: "Madagascar",
+      x: 58,
+      y: 65,
+      description: "African island operations",
+      highlight: "Emerging Market",
+      icon: "🇲🇬"
+    },
+    {
+      name: "Singapore",
+      x: 75,
+      y: 45,
+      description: "Southeast Asian hub",
+      highlight: "Asia Pacific",
+      icon: "🇸🇬"
+    },
+    {
+      name: "South Africa",
+      x: 55,
+      y: 75,
+      description: "Southern African operations",
+      highlight: "African Hub",
+      icon: "🇿🇦"
+    }
+  ];
 
   return (
-    <section ref={containerRef} id="global" className="py-24 bg-black relative overflow-hidden">
-      {/* Background decorative elements with parallax */}
-      <motion.div 
-        className="absolute inset-0"
-        style={{ y: y1 }}
-      >
-        <motion.div 
-          className="absolute top-20 right-10 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"
-          animate={{ y: [0, -15, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
-          className="absolute bottom-20 left-10 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"
-          animate={{ y: [0, -15, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        />
-        <motion.div 
-          className="absolute top-1/2 right-1/3 w-32 h-32 bg-indigo-500/5 rounded-full blur-2xl"
-          animate={{ y: [0, -15, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        />
-      </motion.div>
+    <section id="global" className="py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-blue-200/30 to-indigo-200/30 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-br from-purple-200/30 to-pink-200/30 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/3 w-32 h-32 bg-gradient-to-br from-cyan-200/30 to-blue-200/30 rounded-full blur-2xl"></div>
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header with enhanced animations */}
-        <motion.div 
-          className="text-center mb-20"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8 }}
-        >
-          <motion.div 
-            className="inline-flex items-center bg-white/5 text-blue-400 px-6 py-3 rounded-full text-sm font-medium mb-6 border border-white/10 backdrop-blur-sm"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            whileHover={{ 
-              scale: 1.05,
-              backgroundColor: "rgba(255, 255, 255, 0.1)",
-              borderColor: "rgba(59, 130, 246, 0.5)"
-            }}
-          >
-            <motion.div
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            >
-              <Globe className="w-5 h-5 mr-3 text-blue-400" />
-            </motion.div>
-            <span className="font-semibold">Global Reach</span>
-            <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 2, repeat: Infinity, repeatDelay: 2 }}
-            >
-              <Star className="w-4 h-4 ml-3 text-yellow-400" />
-            </motion.div>
-          </motion.div>
-          <motion.h2 
-            className="text-5xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-indigo-100 bg-clip-text text-transparent"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            Worldwide Presence
-          </motion.h2>
-          <motion.p 
-            className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            From our headquarters in India, we've built a network of trusted partners 
-            and collaborators spanning multiple continents, ensuring global reach and local expertise.
-          </motion.p>
-        </motion.div>
-
-        {/* Stats Grid with enhanced animations */}
-        <motion.div 
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8 }}
-        >
-          {[
-            { icon: Globe, number: countriesCount.count, label: "Countries Served", color: "from-blue-500 to-indigo-500", ref: countriesCount.ref },
-            { icon: Building, number: officesCount.count, label: "Global Offices", color: "from-indigo-500 to-purple-500", ref: officesCount.ref },
-            { icon: Users, number: clientsCount.count, label: "Happy Clients", color: "from-purple-500 to-pink-500", ref: clientsCount.ref },
-            { icon: Award, number: experienceCount.count, label: "Years Experience", color: "from-yellow-500 to-orange-500", ref: experienceCount.ref }
-          ].map((stat, index) => (
-            <motion.div
-              key={index}
-              className="text-center group"
-              initial={{ opacity: 0, y: 30, scale: 0.8 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ 
-                y: -15,
-                scale: 1.05
-              }}
-            >
-              <motion.div
-                className={`w-20 h-20 bg-gradient-to-r ${stat.color} rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
-                whileHover={{ 
-                  scale: 1.15, 
-                  rotate: 8,
-                  boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)"
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <motion.div
-                  animate={{ rotate: [0, 360] }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                >
-                  <stat.icon className="w-10 h-10 text-white" />
-                </motion.div>
-              </motion.div>
-              <motion.div 
-                ref={stat.ref} 
-                className="text-4xl font-bold text-white mb-2 group-hover:scale-110 transition-transform duration-300"
-                initial={{ scale: 0.5 }}
-                whileInView={{ scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                {stat.number}+
-              </motion.div>
-              <div className="text-gray-300 text-sm font-medium">{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Two Column Layout with enhanced animations */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
-          {/* Left Column - Content */}
-          <div className="space-y-8">
-            <motion.div 
-              className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 shadow-2xl group h-[400px] w-full flex flex-col justify-between"
-              initial={{ opacity: 0, y: 20, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6 }}
-              whileHover={{ 
-                scale: 1.02,
-                boxShadow: "0 35px 60px -12px rgba(0, 0, 0, 0.6)"
-              }}
-            >
-              <div>
-                <div className="flex items-center mb-6">
-                  <motion.div 
-                    className="p-3 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl mr-4"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Globe className="w-6 h-6 text-white" />
-                  </motion.div>
-                  <h4 className="text-2xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
-                    Global Operations
-                  </h4>
-                </div>
-                <p className="text-gray-300 mb-6 leading-relaxed text-lg">
-                  From our headquarters in India, we've built a network of trusted partners 
-                  and collaborators spanning multiple continents, ensuring global reach and local expertise.
-                </p>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-6">
-                {[
-                  { number: "8", color: "blue", label: "Countries" },
-                  { number: "4", color: "indigo", label: "Continents" }
-                ].map((item, index) => (
-                  <motion.div 
-                    key={index}
-                    className="text-center p-6 bg-white/5 rounded-xl border border-white/10 hover:scale-105 transition-transform duration-300 group cursor-pointer"
-                    whileHover={{ 
-                      scale: 1.1,
-                      backgroundColor: "rgba(255, 255, 255, 0.1)"
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <motion.div 
-                      className={`text-3xl font-bold text-${item.color}-400 mb-2 group-hover:scale-110 transition-transform duration-300`}
-                      whileHover={{ scale: 1.2 }}
-                    >
-                      {item.number}
-                    </motion.div>
-                    <div className="text-sm text-gray-300 font-semibold">{item.label}</div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+        {/* Header */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center bg-gradient-to-r from-blue-500/10 to-indigo-500/10 text-blue-700 px-6 py-3 rounded-full text-sm font-medium mb-6 border border-blue-200/50 backdrop-blur-sm">
+            <Globe className="w-5 h-5 mr-3 text-blue-600" />
+            <span className="font-semibold">Worldwide Operations</span>
+            <Sparkles className="w-4 h-4 ml-3 text-blue-600" />
           </div>
+          <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-slate-800 via-blue-800 to-indigo-800 bg-clip-text text-transparent">
+            Global Presence
+          </h2>
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+            Operating internationally with key partners across multiple continents, 
+            delivering excellence in conveyor belts worldwide.
+          </p>
+        </div>
 
-          {/* Right Column - Map with enhanced animations */}
-          <div className="flex justify-center lg:justify-end">
-            <motion.div 
-              className="w-full max-w-lg relative group"
-              initial={{ opacity: 0, y: 20, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6 }}
-              whileHover={{ 
-                scale: 1.02,
-                rotateY: 2
-              }}
-            >
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                whileHover={{ scale: 1.1 }}
-              />
-              <motion.div 
-                className="w-full h-[400px] rounded-2xl shadow-2xl border-4 border-white/10 overflow-hidden"
-                whileHover={{ 
-                  boxShadow: "0 35px 60px -12px rgba(59, 130, 246, 0.3)"
-                }}
-              >
-                <motion.img 
-                  src="/images/locationb.png" 
-                  alt="World Map with Global Locations" 
-                  className="w-full h-full object-cover rounded-2xl"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.5 }}
-                />
-              </motion.div>
-            </motion.div>
+        {/* World Map Visualization */}
+        <div className="relative bg-gradient-to-br from-white to-blue-50/50 rounded-3xl p-10 mb-20 overflow-hidden border border-blue-200/50 shadow-2xl backdrop-blur-sm">
+          {/* Enhanced background pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="w-full h-full" style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+            }}></div>
+          </div>
+          
+          <div className="relative">
+            <h3 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-slate-800 to-blue-800 bg-clip-text text-transparent">
+              Our Global Network
+            </h3>
+            
+            {/* Two Column Layout: Content Left, Map Right */}
+            <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
+              {/* Left Column - Content */}
+              <div className="space-y-8">
+                <div className="bg-gradient-to-br from-white to-blue-50/50 rounded-2xl p-8 border border-blue-200/50 shadow-2xl group h-[400px] w-full flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center mb-6">
+                      <div className="p-3 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl mr-4">
+                        <Globe className="w-6 h-6 text-white" />
+                      </div>
+                      <h4 className="text-2xl font-bold bg-gradient-to-r from-slate-800 to-blue-800 bg-clip-text text-transparent">
+                        Global Operations
+                      </h4>
+                    </div>
+                    <p className="text-slate-600 mb-6 leading-relaxed text-lg">
+                      From our headquarters in Spain, we've built a network of trusted partners 
+                      and collaborators spanning multiple continents, ensuring global reach and local expertise.
+                    </p>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl border border-blue-200/50 hover:scale-105 transition-transform duration-300 group cursor-pointer">
+                      <div className="text-3xl font-bold text-blue-700 mb-2 group-hover:scale-110 transition-transform duration-300">8</div>
+                      <div className="text-sm text-blue-600 font-semibold">Countries</div>
+                    </div>
+                    <div className="text-center p-6 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl border border-indigo-200/50 hover:scale-105 transition-transform duration-300 group cursor-pointer">
+                      <div className="text-4xl font-bold text-indigo-700 mb-3 group-hover:scale-110 transition-transform duration-300">4</div>
+                      <div className="text-base text-indigo-600 font-semibold">Continents</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column - Map */}
+              <div className="flex justify-center lg:justify-end">
+                <div className="w-full max-w-lg relative group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-2xl blur-2xl opacity-0"></div>
+                  <div className="w-full h-[400px] rounded-2xl shadow-2xl border-4 border-white/50 overflow-hidden">
+                    <img 
+                      src="/images/Locations.png" 
+                      alt="World Map with Global Locations" 
+                      className="w-full h-full object-cover rounded-2xl"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Location Cards Grid - Full Width */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {locations.map((location, index) => (
+                <div key={index} className="bg-gradient-to-br from-white to-blue-50/30 rounded-2xl p-4 hover:scale-105 transition-all duration-500 border border-blue-200/30 shadow-lg hover:shadow-2xl group backdrop-blur-sm">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="text-2xl">{location.icon}</div>
+                    <span className="text-xs bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 px-2 py-1 rounded-full font-semibold border border-blue-200/50">
+                      {location.highlight}
+                    </span>
+                  </div>
+                  <h4 className="text-lg font-bold mb-2 text-slate-800 group-hover:text-blue-700 transition-colors duration-300">
+                    {location.name}
+                  </h4>
+                  <p className="text-slate-600 text-sm leading-relaxed">{location.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Additional Features with enhanced animations */}
-        <motion.div 
-          className="grid md:grid-cols-3 gap-8"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8 }}
-        >
-          {[
-            {
-              icon: TrendingUp,
-              title: "Continuous Growth",
-              description: "Expanding our global footprint year after year with strategic partnerships and local expertise.",
-              color: "from-green-500 to-emerald-500"
-            },
-            {
-              icon: Zap,
-              title: "Lightning Fast",
-              description: "Quick response times and efficient service delivery across all time zones and locations.",
-              color: "from-yellow-500 to-orange-500"
-            },
-            {
-              icon: Star,
-              title: "Premium Quality",
-              description: "Maintaining the highest standards of quality and service excellence worldwide.",
-              color: "from-purple-500 to-pink-500"
-            }
-          ].map((feature, index) => (
-            <motion.div
-              key={index}
-              className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 hover:shadow-2xl transition-all duration-300 group cursor-pointer"
-              initial={{ opacity: 0, y: 30, scale: 0.8 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ 
-                y: -15, 
-                scale: 1.03,
-                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.4)"
-              }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <motion.div 
-                className={`w-16 h-16 bg-gradient-to-r ${feature.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
-                whileHover={{ 
-                  scale: 1.2,
-                  rotate: 10
-                }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <motion.div
-                  animate={{ rotate: [0, 360] }}
-                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                >
-                  <feature.icon className="w-8 h-8 text-white" />
-                </motion.div>
-              </motion.div>
-              <h3 className="text-xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors duration-300">
-                {feature.title}
-              </h3>
-              <p className="text-gray-300 leading-relaxed">
-                {feature.description}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
+        {/* Headquarters Information */}
+        <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-3xl p-10 border border-blue-500/30 shadow-2xl relative overflow-hidden">
+          {/* Background pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="w-full h-full" style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+            }}></div>
+          </div>
+          
+          <div className="grid lg:grid-cols-2 gap-12 items-center relative z-10">
+            <div>
+              <div className="flex items-center mb-6">
+                <div className="p-3 bg-white/20 rounded-xl mr-4">
+                  <MapPin className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-3xl font-bold text-white">Headquarters</h3>
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-start space-x-4">
+                  <div className="p-2 bg-white/20 rounded-lg mt-1 flex-shrink-0">
+                    <MapPin className="w-4 h-4 text-white" />
+                  </div>
+                  <div className="text-white/90">
+                    <p className="font-semibold text-lg">S.Y.NO: 494/5A,6,7B</p>
+                    <p className="text-sm opacity-90">THOTAVARIPALEM,</p>
+                    <p className="text-sm opacity-90">GAVINIVARIPALEM ROAD,</p>
+                    <p className="text-sm opacity-90">CHIRALA - 523166,</p>
+                    <p className="text-sm opacity-90">ANDHRA PRADESH, INDIA.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-8">
+              <div className="text-center group">
+                <div className="bg-white/20 rounded-2xl p-6 mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Users className="w-10 h-10 mx-auto text-white" />
+                </div>
+                <div className="text-lg font-semibold text-white">Global Team</div>
+                <div className="text-sm text-white/80">Expert professionals</div>
+              </div>
+              <div className="text-center group">
+                <div className="bg-white/20 rounded-2xl p-6 mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Handshake className="w-10 h-10 mx-auto text-white" />
+                </div>
+                <div className="text-lg font-semibold text-white">Partnerships</div>
+                <div className="text-sm text-white/80">Trusted collaborations</div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      {/* Floating particles */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(15)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-blue-400/20 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -50, 0],
-              opacity: [0, 1, 0],
-              scale: [0, 1, 0],
-            }}
-            transition={{
-              duration: 4 + Math.random() * 3,
-              repeat: Infinity,
-              delay: Math.random() * 3,
-            }}
-          />
-        ))}
+        {/* Global Stats */}
+        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          {[
+            { number: "8", label: "Countries", icon: Globe },
+            { number: "60+", label: "Years Experience", icon: Award },
+            { number: "100+", label: "Global Partners", icon: Handshake },
+            { number: "24/7", label: "Support", icon: TrendingUp }
+          ].map((stat, index) => (
+            <div key={index} className="group">
+              <div className="relative">
+                <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-300">
+                  {stat.number}
+                </div>
+                <div className="text-slate-600 font-medium">{stat.label}</div>
+                <div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto mt-3 group-hover:w-16 transition-all duration-300 rounded-full"></div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
